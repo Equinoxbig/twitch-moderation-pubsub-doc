@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>error · GitBook</title>
+        <title>untimeout · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
 
-    <link rel="next" href="followers.html" />
+    <link rel="next" href="unban.html" />
 
 
-    <link rel="prev" href="emoteonlyoff.html" />
+    <link rel="prev" href="subscribersoff.html" />
 
 
     </head>
@@ -193,7 +193,7 @@
 
         </li>
 
-        <li class="chapter active" data-level="2.6" data-path="error.html">
+        <li class="chapter " data-level="2.6" data-path="error.html">
 
                 <a href="error.html">
 
@@ -323,7 +323,7 @@
 
         </li>
 
-        <li class="chapter " data-level="2.16" data-path="timeout.html">
+        <li class="chapter" data-level="2.16" data-path="timeout.html">
 
                 <a href="timeout.html">
 
@@ -362,8 +362,7 @@
 
         </li>
 
-
-        <li class="chapter " data-level="2.19" data-path="untimeout.html">
+        <li class="chapter active" data-level="2.19" data-path="untimeout.html">
 
                 <a href="untimeout.html">
 
@@ -375,6 +374,9 @@
 
 
         </li>
+
+
+
 
         <li class="header">Functions</li>
 
@@ -423,7 +425,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >error</a>
+        <a href="." >untimeout</a>
     </h1>
 </div>
 
@@ -439,17 +441,44 @@
                                 <section class="normal markdown-section">
 
                                 <h3 id="description">Description</h3>
-<p>Fired when an error is received from the Websocket.</p>
+<p>Fired when an user is untimed out from a channel.</p>
 <h3 id="example">Example</h3>
 <pre><code class="lang-js"><span class="hljs-comment">// ... Initializing</span>
 
 pubsub
-    .on(<span class="hljs-string">&apos;error&apos;</span>, (error) =&gt; {
-        <span class="hljs-built_in">console</span>.log(error);
+    .on(<span class="hljs-string">&apos;untimeout&apos;</span>, (data) =&gt; {
+        <span class="hljs-built_in">console</span>.log(data);
     });
 </code></pre>
 <h3 id="data">Data</h3>
-<p>Raw websocket response from the server containing the error.</p>
+<pre><code class="lang-js">{
+    channel_id: <span class="hljs-string">&apos;41677043&apos;</span>,
+    type: <span class="hljs-string">&apos;untimeout&apos;</span>,
+    moderator: {
+        id: <span class="hljs-string">&apos;41677043&apos;</span>,
+        name: <span class="hljs-string">&apos;equinoxbug_&apos;</span>
+    },
+    target: {
+        id: <span class="hljs-string">&apos;136187141&apos;</span>,
+        name: <span class="hljs-string">&apos;iFonny&apos;</span>
+    },
+    reason: <span class="hljs-string">&apos;this is a test untimeout&apos;</span>,
+    duration: <span class="hljs-number">40</span>,
+    created_at: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime()
+}
+</code></pre>
+<hr>
+<p><code>channel_id</code> - {String} - The id of the channel where the event happened.</p>
+<p><code>type</code> - {String} - The action that happened.</p>
+<p><code>moderator</code> - {Object} - The moderator that did the action.</p>
+<p><code>moderator.id</code> - {String} - The id of the moderator that did the action.</p>
+<p><code>moderator.name</code> - {String} - The username of the moderator that did the action.</p>
+<p><code>target</code> - {Object} - The user that is now timed out.</p>
+<p><code>target.id</code> - {String} - The id of the user.</p>
+<p><code>target.name</code> - {String} - The name of the user.</p>
+<p><code>reason</code> - {String} - The reason of the untimeout. | Always null twitch doesn't provide reason on untimeout</p>
+<p><code>duration</code> - {Number} - The duration of the untimeout. | Always 0, consider it as a 0sec timeout to override current timeout</p>
+<p><code>created_at</code> - {Number} - Timestamp of the creation of the action.</p>
 <hr>
 
 
@@ -484,7 +513,7 @@ pubsub
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"error","level":"2.6","depth":1,"next":{"title":"followers","level":"2.7","depth":1,"path":"followers.md","ref":"followers.md","articles":[]},"previous":{"title":"emoteonlyoff","level":"2.5","depth":1,"path":"emoteonlyoff.md","ref":"emoteonlyoff.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-api"],"pluginsConfig":{"theme-api":{"languages":[{"lang":"js","name":"JavaScript","default":true},{"lang":"go","name":"Go"}],"split":true,"theme":"light"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"error.md","mtime":"2017-10-14T11:17:47.544Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-14T14:32:09.279Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"untimeout","level":"2.16","depth":1,"next":{"title":"unban","level":"2.17","depth":1,"path":"unban.md","ref":"unban.md","articles":[]},"previous":{"title":"subscribersoff","level":"2.15","depth":1,"path":"subscribersoff.md","ref":"subscribersoff.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-api"],"pluginsConfig":{"theme-api":{"languages":[{"lang":"js","name":"JavaScript","default":true},{"lang":"go","name":"Go"}],"split":true,"theme":"light"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"untimeout.md","mtime":"2017-10-14T14:31:56.086Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-14T14:32:09.279Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
